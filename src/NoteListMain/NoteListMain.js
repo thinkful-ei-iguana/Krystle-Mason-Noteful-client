@@ -8,9 +8,11 @@ import NoteContext from '../NoteContext';
 import { getNotesForFolder } from '../notes-helpers'  
 
 export default class NoteListMain extends React.Component {
-  // NoteListMain.defaultProps = {
-  //   notes: [],
-  // }
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
   static contextType = NoteContext
   render() {
     const {notes} = this.context;

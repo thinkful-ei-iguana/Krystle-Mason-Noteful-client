@@ -28,7 +28,7 @@ class App extends Component {
             return Promise.all([notesRes.json(), foldersRes.json()]);
         })
         .then(([notesData, foldersData]) => {
-            this.setState({notesData, foldersData});
+            this.setState({notes: notesData, folders: foldersData});
         })
         .catch(err => {
             console.error({err});
@@ -44,11 +44,9 @@ class App extends Component {
     renderNavRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
                     <Route
                         exact
-                        key={path}
-                        path={path}
+                        path={['/', '/folder/:folderId']}
                         // render={routeProps => (
                         //     <NoteListNav
                         //         folders={folders}
@@ -58,7 +56,6 @@ class App extends Component {
                         // )}
                         component={NoteListNav}
                     />
-                ))}
                 <Route
                     path="/note/:noteId"
                     // render={routeProps => {
@@ -76,7 +73,6 @@ class App extends Component {
     }
 
     renderMainRoutes() {
-        const {notes, folders} = this.state;
         return (
             <>
                 {['/', '/folder/:folderId'].map(path => (

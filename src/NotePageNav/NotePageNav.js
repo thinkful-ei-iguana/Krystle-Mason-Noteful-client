@@ -6,11 +6,14 @@ import {findNote, findFolder} from '../notes-helpers';
 import NoteContext from '../NoteContext';
 
 export default class NotePageNav extends React.Component {
-  // static defaultProps = {
-  //   history: {
-  //     goBack: () => {}
-  //   }
-  // }
+  static defaultProps = {
+    history: {
+      goBack: () => { }
+    },
+    match: {
+      params: {}
+    }
+  }
   static contextType = NoteContext
 
   render() {
